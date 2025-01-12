@@ -1,18 +1,33 @@
 <div class="game-container">
     <h1>🧠 Words Recall</h1>
 
+
+<p style="color: white;">Test your memory skills in this fun and challenging Words Recall Game! You'll be shown a set of random words for a limited time (based on your chosen difficulty level). Your task is to memorize them and re-enter the words in any order.</p>
+
+<br><br>
+
+
+
     <!-- Time Selection -->
     <label for="time">⏳ Set Display Duration (Seconds):</label>
     <input type="number" id="time" min="1" [(ngModel)]="timeInput" placeholder="Enter seconds">
-
+<br>
     <!-- Word Count Selection -->
-    <label for="wordCount">🔢 Number of Words to Display:</label>
+    <label for="wordCount">🔢 Number of Words to Display (Max : 100 Words):</label>
     <input type="number" id="wordCount" min="1" [(ngModel)]="wordCount" placeholder="Enter number of words">
 
 <br>    <br><br>
     <!-- Start Game Button -->
     <button class="start-button" *ngIf="!isGameActive" (click)="startGame()">Start Game</button>
 <br>
+
+
+<br>
+
+<!-- Countdown Timer -->
+
+
+
     <!-- Word Display Section -->
     <div *ngIf="!hideWords" class="word-display">
         <div class="word-grid">
@@ -22,7 +37,19 @@
             </div>
         </div>
     </div>
+
+
+
     <br>
+
+
+    <div *ngIf="countdownActive" class="countdown-timer" style="color: white;">
+        Starting in: {{ countdown }}
+      </div>
+      
+      <br>
+
+
 
     <!-- Input Section -->
     <div *ngIf="showInputSection" class="input-section">
@@ -59,20 +86,32 @@
     }
     
     /* Game Container */
-    .game-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9);
-        padding: 40px;
-        width: 90%;
-        max-width: 700px;
-        animation: zoomIn 1s ease-in-out;
-    }
+ /* Ensure the parent takes up the full viewport */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center the .game-container */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    width: 90%;
+    max-width: 700px;
+    animation: zoomIn 1s ease-in-out;
+}
+
     
     /* Header Styling */
     h1 {
@@ -217,5 +256,41 @@
             transform: translateY(-10px);
         }
     }
+
+    .result-text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .highlight {
+    font-weight: bold;
+    color: #4caf50; /* Green for correct words */
+  }
+  .incorrect-words {
+    color: #f44336; /* Red for incorrect words */
+  }
+  .missing-words {
+    color: #ff9800; /* Orange for missing words */
+  }
+  .countdown {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2196f3;
+    text-align: center;
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+  
+
+
+
+
+
     </style>
     

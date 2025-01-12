@@ -15,7 +15,9 @@ export class MenuComponent {
 
   quitGame(): void {
     if (confirm('Are you sure you want to quit?')) {
-      window.close();
+      window.location.href = "https://www.someurl.com"; // Redirect to a different page or home page.
     }
   }
+  
+  
 }
