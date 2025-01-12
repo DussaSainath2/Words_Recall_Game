@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+   
+    <style>
+        /* Body styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298); /* Attractive gradient background */
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        /* Title styling */
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Glow effect for text */
+        }
+
+        /* Button container */
+        .button-container {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 15px; /* Add spacing between buttons */
+        }
+
+        /* Buttons styling */
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Vibrant button gradient */
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Button shadow for depth */
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hover effect for buttons */
+        button:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Focus effect for buttons */
+        button:focus {
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 10px #fff; /* Glow effect on focus */
+        }
+    </style>
+</head>
+
+
+<h1 style=" display: flex;
+justify-content: center;
+align-items: center;">Words Recall</h1>
+
+<body>
+
+    <div class="button-container">
+        <button (click)="navigateTo('game')">Play</button>
+        <button (click)="navigateTo('about')">About Us</button>
+        <button (click)="quitGame()">Quit</button>
+    </div>
+</body>
+</html>

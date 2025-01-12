@@ -1,0 +1,81 @@
+<div class="about-container">
+    <h1>About Memory Game</h1>
+    <p>Developed by Sainath Dussa</p>
+    <p class="copyright">© 2024 DS</p>
+    <button (click)="goToMenu()" class="back-button">Back to Menu</button>
+  </div>
+  <div class="sliding-text">Welcome to the Gaming Zone!</div>
+
+<style>
+  .sliding-text {
+    width: 100%; /* Full-width for the sliding container */
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflow content */
+    box-sizing: border-box;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #ff5722, #e64a19);
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Animation for sliding text */
+  .sliding-text {
+    animation: slide-left 10s linear infinite; /* Smooth sliding animation */
+  }
+
+  @keyframes slide-left {
+    0% {
+      transform: translateX(100%); /* Start from outside right */
+    }
+    100% {
+      transform: translateX(-100%); /* Slide to outside left */
+    }
+  }
+</style>
+
+<!--
+
+
+/*
+
+<div class="sliding-text1">Many More Games Yet to Come</div>
+
+
+  .sliding-text1 {
+    position: fixed; /* Sticks the text to the bottom of the viewport */
+    bottom: 0; /* Positions it at the very bottom */
+    width: 100%; /* Full-width for the sliding container */
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflow content */
+    box-sizing: border-box;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffee00; /* Yellow text */
+    background: linear-gradient(135deg, #000000, #000000); /* Black background */
+    text-align: center;
+    padding: 10px;
+    z-index: 9999; /* Ensures it appears on top of other elements */
+  }
+
+  */
+
+
+-->
+<style>
+
+  /* Animation for sliding text */
+  .sliding-text1 {
+    animation: slide-left 10s linear infinite; /* Smooth sliding animation */
+  }
+
+  @keyframes slide-left {
+    0% {
+      transform: translateX(-100%); /* Start from outside right */
+    }
+    100% {
+      transform: translateX(100%); /* Slide to outside left */
+    }
+  }
+</style>

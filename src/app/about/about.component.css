@@ -1,0 +1,101 @@
+/* Global styles for the background and font */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212; /* Dark background for a gaming feel */
+    color: #fff; /* White text */
+  }
+  
+  /* Styling the about container */
+  .about-container {
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Attractive gradient for a gaming feel */
+    color: #ffffff; /* White text for contrast */
+    padding: 40px;
+    display: flex; /* Use flexbox for centering */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack items vertically */
+    border-radius: 20px; /* Smooth rounded edges */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* More prominent shadow for depth */
+    text-align: center;
+    width: 90%; /* Make it responsive */
+    max-width: 400px; /* Limit the maximum width */
+    margin: auto; /* Center it horizontally on the page */
+    position: absolute; /* Position in the center of the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center it vertically and horizontally */
+}
+
+/* Header Styling */
+.about-container h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffd700; /* Gold color for the title */
+}
+
+/* Button Styling */
+.about-container button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #ff5722; /* Vibrant button color */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.about-container button:hover {
+    background-color: #e64a19; /* Darker hover color */
+    transform: scale(1.1); /* Slight enlargement on hover */
+    box-shadow: 0 4px 15px rgba(255, 87, 34, 0.6); /* Add a glow effect */
+}
+
+/* Paragraph Styling */
+.about-container p {
+    font-size: 1rem;
+    color: #cfcfcf; /* Light grey text */
+    margin-top: 15px;
+    font-style: italic;
+}
+
+  
+  .about-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #f8ff20; /* Golden color for emphasis */
+  }
+  
+  .about-container .copyright {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: #bdc3c7; /* Lighter grey for the copyright text */
+  }
+  
+  /* Styling the button */
+  .back-button {
+    background-color: #3498db; /* Blue color for button */
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-button:hover {
+    background-color: #2980b9; /* Darker blue when hovered */
+  }
+  

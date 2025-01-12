@@ -1,0 +1,221 @@
+<div class="game-container">
+    <h1>🧠 Words Recall</h1>
+
+    <!-- Time Selection -->
+    <label for="time">⏳ Set Display Duration (Seconds):</label>
+    <input type="number" id="time" min="1" [(ngModel)]="timeInput" placeholder="Enter seconds">
+
+    <!-- Word Count Selection -->
+    <label for="wordCount">🔢 Number of Words to Display:</label>
+    <input type="number" id="wordCount" min="1" [(ngModel)]="wordCount" placeholder="Enter number of words">
+
+<br>    <br><br>
+    <!-- Start Game Button -->
+    <button class="start-button" *ngIf="!isGameActive" (click)="startGame()">Start Game</button>
+<br>
+    <!-- Word Display Section -->
+    <div *ngIf="!hideWords" class="word-display">
+        <div class="word-grid">
+            <div *ngFor="let word of randomWords; let i = index" class="word-box">
+                <div class="word-number">{{ i + 1 }}.</div>
+                <div class="word-text">{{ word }}</div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Input Section -->
+    <div *ngIf="showInputSection" class="input-section">
+        <label for="playerInput">🎮 Enter the words you remember (separated by commas):</label>
+        <input type="text" id="playerInput" [(ngModel)]="playerInput">
+        <button class="submit-button" *ngIf="isGameActive" (click)="submitWords()">Submit</button>
+    </div>
+
+
+<!-- Result Section -->
+<div *ngIf="showResult" class="result-section">
+    <div class="result-text" [innerHTML]="result"></div>
+    <!-- Replay Button -->
+    <button (click)="replayGame()">Replay Game</button>
+  </div>
+
+    <!-- Back to Menu -->
+    <button class="menu-button" (click)="goToMenu()">Back to Menu</button>
+</div>
+
+<style>
+    /* General Body Styling */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Press Start 2P', cursive; /* Gaming-inspired font */
+        background: radial-gradient(circle, #1d3557, #457b9d, #a8dadc); /* Vibrant gaming gradient */
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+    
+    /* Game Container */
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9);
+        padding: 40px;
+        width: 90%;
+        max-width: 700px;
+        animation: zoomIn 1s ease-in-out;
+    }
+    
+    /* Header Styling */
+    h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #ffcc00; /* Golden-yellow for game title */
+        margin-bottom: 30px;
+        text-shadow: 0 4px 10px rgba(255, 204, 0, 0.7);
+        animation: pulse 2s infinite; /* Title pulse animation */
+    }
+    
+    /* Label Styling */
+    label {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #00d1ff; /* Bright blue text */
+        display: block;
+        text-shadow: 0 2px 5px rgba(0, 209, 255, 0.7);
+    }
+    
+    /* Input Fields */
+    input[type="number"], input[type="text"] {
+        padding: 12px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 300px;
+        background: #1c1c1c;
+        color: #fff;
+        text-align: center;
+        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+        margin-bottom: 15px;
+    }
+    
+    /* Buttons */
+    button {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: #fff;
+        box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(255, 69, 0, 0.8);
+    }
+    
+    /* Start Button Special */
+    .start-button {
+        background: linear-gradient(135deg, #22c1c3, #fdbb2d);
+    }
+    
+    /* Word Display */
+    .word-display {
+        font-size: 1.5rem;
+        color: #fff;
+        margin-top: 20px;
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    .word-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+    
+    .word-box {
+        background: #ffcc00;
+        color: #333;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        transition: transform 0.3s, background 0.3s;
+        animation: bounce 0.5s ease-out;
+    }
+    
+    .word-box:hover {
+        transform: scale(1.1);
+        background: #1d3557;
+        color: #fff;
+    }
+    
+    /* Result Section */
+    .result-section {
+        margin-top: 20px;
+        background: #1d3557;
+        color: #ffcc00;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    }
+    
+    /* Animations */
+    @keyframes zoomIn {
+        0% {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+    }
+    
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+    </style>
+    
