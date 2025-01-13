@@ -29,7 +29,7 @@
 
 <!-- Word Display Section -->
 <div *ngIf="!hideWords" class="word-display">
-  <div class="timer">⏲️ Your Game Starts in: {{ countdown }} seconds ⌛</div>
+  <div class="timer">Your Game Starts in : {{ countdown }} seconds ⌛</div>
   <div class="word-grid">
     <div *ngFor="let word of randomWords; let i = index" class="word-box">
       <div class="word-number">{{ i + 1 }}.</div>
@@ -86,12 +86,26 @@
 .word-box {
   background-color: #ff9800; /* Bright color for visibility */
   color: #fff;
-  padding: 10px;
+  padding: 15px;
   border-radius: 5px;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
+  box-sizing: ;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  
+  /* Centering using flexbox */
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center;    /* Vertically center */
+  text-align: center;     /* Align text content */
 }
+
+.word-text {
+  /* You can add additional styling here if needed */
+}
+
+
+
 
 .word-box:hover {
   transform: scale(1.1); /* Slight hover effect */
