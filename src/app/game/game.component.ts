@@ -27,7 +27,8 @@ export class GameComponent {
     "broccoli", "spinach", "leek", "pumpkin", "squash", "eggplant", "artichoke", "beets", "radish", "cabbage",
     "lettuce", "onion", "garlic", "ginger", "zucchini", "asparagus", "carrot", "peas", "corn", "potatoes", "yams",
     "yam", "sweet", "potatoes", "okra", "celery", "chili", "chive", "cress", "coriander", "parsley", "mint"];
-    randomWords: string[] = [];
+   
+  randomWords: string[] = [];
   wordDisplay = '';
   hideWords = true;
   showInputSection = false;
@@ -39,7 +40,8 @@ export class GameComponent {
   isGameActive = false;
   countdown: number = 0; // For countdown timer
   intervalId: any = null; // To store the interval reference
-  
+  typedWords: string[] = []; // Array to store the split words
+
   constructor(private router: Router) {}
 
   startGame(): void {
@@ -71,6 +73,11 @@ export class GameComponent {
         this.showInputSection = true; // Show input section
       }
     }, 1000);
+  }
+
+  // Function to update words based on space input
+  updateWords() {
+    this.typedWords = this.playerInput.trim().split(' ').filter(word => word.length > 0);
   }
 
   submitWords(): void {

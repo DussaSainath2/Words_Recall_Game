@@ -60,21 +60,89 @@
 
 
 
-    <!-- Input Section -->
+    <!-- Input Section 
     <div *ngIf="showInputSection" class="input-section">
         <label for="playerInput">🎮 Enter the words you remember (separated by commas):</label>
         <input type="text" id="playerInput" [(ngModel)]="playerInput">
         <button class="submit-button" *ngIf="isGameActive" (click)="submitWords()">Submit</button>
     </div>
+-->
+
+
+
+<div *ngIf="showInputSection" class="input-section">
+    <label for="playerInput">🎮 Enter the words you remember (separate each word by space):</label>
+    <input type="text" id="playerInput" [(ngModel)]="playerInput" (input)="updateWords()">
+    
+    <div class="word-boxes">
+        <span *ngFor="let word of typedWords" class="word-box">{{ word }}</span>
+    </div>
+    
+    <button class="submit-button" *ngIf="isGameActive" (click)="submitWords()">Submit</button>
+</div>
+
+<style>
+  .input-section {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .word-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .word-box {
+    background-color: #ff9800; /* Bright color for visibility */
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .word-box:hover {
+    transform: scale(1.1); /* Slight hover effect */
+  }
+
+  .submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- Result Section -->
 <div *ngIf="showResult" class="result-section">
     <div class="result-text" [innerHTML]="result"></div>
     <!-- Replay Button -->
-    <button (click)="replayGame()">Replay Game</button>
+    <button (click)="replayGame()">Replay Game with same difficulty </button>
   </div>
-
+<br> <br>
     <!-- Back to Menu -->
     <button class="menu-button" (click)="goToMenu()">Back to Menu</button>
 </div>
