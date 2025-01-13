@@ -254,14 +254,16 @@ export class GameComponent {
     const missingWords = this.randomWords.filter((word) => !enteredWords.includes(word));
 
     this.result = `
-      <div class="result-text">
-          <span class="score-text">You remembered <span class="highlight">${score}</span> out of <span class="highlight">${totalWords}</span> words!</span><br><br>
-          <span class="correct-words" >Correct Words: <span>${correctWords.join(', ')}</span></span><br><br>
-          <span class="incorrect-words">Incorrect Words: <span>${incorrectWords.join(', ')}</span></span><br><br>
-          <span class="missing-words">Missing Words: <span>${missingWords.join(', ')}</span></span><br><br>
-          <span class="score-summary">Your Score: <span>${score}/${totalWords}</span></span><br><br>
-      </div>
-    `;
+    
+    <div class="result-text">
+        <span class="score-text">You remembered <span class="highlight">${score}</span> out of <span class="highlight">${totalWords}</span> words!</span><br><br>
+        <span class="correct-words">Correct Words: <span class="correct">${correctWords.join(', ')}</span></span><br><br>
+        <span class="incorrect-words">Incorrect Words: <span class="incorrect">${incorrectWords.join(', ')}</span></span><br><br>
+        <span class="missing-words">Missing Words: <span class="missing">${missingWords.join(', ')}</span></span><br><br>
+        <span class="score-summary">Your Score: <span>${score}/${totalWords}</span></span><br><br>
+    </div>
+  `;
+  
 
     this.showResult = true;
     this.isGameActive = false;

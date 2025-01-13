@@ -1,325 +1,374 @@
 <div class="game-container">
-    <h1>🧠 Words Recall</h1>
+  <h1>🧠 Words Recall</h1>
 
-    <!-- Time Selection -->
-    <label for="time">⏳ Set Display Duration (Seconds):</label>
-    <input type="number" id="time" min="1" [(ngModel)]="timeInput" placeholder="Enter seconds">
 
-    <!-- Word Count Selection -->
-    <label for="wordCount">🔢 Number of Words to Display( Max: 50):</label>
-    <input type="number" id="wordCount" min="1" [(ngModel)]="wordCount" placeholder="Enter number of words">
+<p style="color: white; font-family:'Courier New', Courier, monospace;">Test your memory skills in this fun and challenging Words Recall Game! You'll be shown a set of random words for a limited time (based on your chosen difficulty level). Your task is to memorize them and re-enter the words in any order.</p>
+
+<br>
+
+  <!-- Time Selection -->
+  <label for="time">⏳ Set Display Duration (Seconds):</label>
+  <input type="number" id="time" min="1" [(ngModel)]="timeInput" placeholder="Enter seconds">
+<br>
+  <!-- Word Count Selection -->
+   <br>
+<br>
+  <label for="wordCount">🔢 Number of Words to Display (Max : 100 Words):</label>
+  <input type="number" id="wordCount" min="1" [(ngModel)]="wordCount" placeholder="Enter number of words">
 
 <br>    <br><br>
-    <!-- Start Game Button -->
-    <button class="start-button" *ngIf="!isGameActive" (click)="startGame()">Start New Game</button>
+  <!-- Start Game Button -->
+  <button class="start-button" *ngIf="!isGameActive" (click)="startGame()">Start New Game</button>
 <br>
 
 
 
-    <!-- Word Display Section 
-    <div *ngIf="!hideWords" class="word-display">
-        <div class="word-grid">
-            <div *ngFor="let word of randomWords; let i = index" class="word-box">
-                <div class="word-number">{{ i + 1 }}.</div>
-                <div class="word-text">{{ word }}</div>
-            </div>
-        </div>
+  <!-- Word Display Section 
+=======
+<br>
+
+<!-- Word Display Section -->
+<div *ngIf="!hideWords" class="word-display">
+  <div class="timer">⏲️ Your Game Starts in: {{ countdown }} seconds ⌛</div>
+  <div class="word-grid">
+    <div *ngFor="let word of randomWords; let i = index" class="word-box">
+      <div class="word-number">{{ i + 1 }}.</div>
+      <div class="word-text">{{ word }}</div>
     </div>
+  </div>
+</div>
+<br>
+
+  <!-- Input Section 
+=======
+  <div *ngIf="countdownActive" class="countdown-timer" style="color: white;">
+      Starting in: {{ countdown }}
+    </div>
+    
     <br>
 
 
--->
 
-
-
-  <!-- Word Display Section -->
-  <div *ngIf="!hideWords" class="word-display">
-    <div class="timer">⏲️ Your Game Starts in: {{ countdown }} seconds</div>
-    <div class="word-grid">
-      <div *ngFor="let word of randomWords; let i = index" class="word-box">
-        <div class="word-number">{{ i + 1 }}.</div>
-        <div class="word-text">{{ word }}</div>
-      </div>
-    </div>
+  <!-- Input Section 
+  <div *ngIf="showInputSection" class="input-section">
+      <label for="playerInput">🎮 Enter the words you remember (separated by commas):</label>
+      <input type="text" id="playerInput" [(ngModel)]="playerInput">
+      <button class="submit-button" *ngIf="isGameActive" (click)="submitWords()">Submit</button>
   </div>
-  <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Input Section 
-    <div *ngIf="showInputSection" class="input-section">
-        <label for="playerInput">🎮 Enter the words you remember (separated by commas):</label>
-        <input type="text" id="playerInput" [(ngModel)]="playerInput">
-        <button class="submit-button" *ngIf="isGameActive" (click)="submitWords()">Submit</button>
-    </div>
 -->
 
 
 
 <div *ngIf="showInputSection" class="input-section">
-    <label for="playerInput">🎮 Enter the words you remember (separate each word by space):</label>
-    <input type="text" id="playerInput" [(ngModel)]="playerInput" (input)="updateWords()">
-    
-    <div class="word-boxes">
-        <span *ngFor="let word of typedWords" class="word-box">{{ word }}</span>
-    </div>
-    
-    <button class="submit-button" *ngIf="isGameActive" (click)="submitWords()">Submit</button>
+  <label for="playerInput">🎮 Enter the words you remember (separate each word by space):</label>
+  <input type="text" id="playerInput" [(ngModel)]="playerInput" (input)="updateWords()">
+  
+  <div class="word-boxes">
+      <span *ngFor="let word of typedWords" class="word-box">{{ word }}</span>
+  </div>
+  
+  <button class="submit-button" *ngIf="isGameActive" (click)="submitWords()">Submit</button>
 </div>
 
 <style>
-  .input-section {
-    text-align: center;
-    margin-top: 20px;
-  }
+.input-section {
+  text-align: center;
+  margin-top: 20px;
+}
 
-  .word-boxes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-  }
+.word-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
 
-  .word-box {
-    background-color: #ff9800; /* Bright color for visibility */
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-  }
+.word-box {
+  background-color: #ff9800; /* Bright color for visibility */
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
 
-  .word-box:hover {
-    transform: scale(1.1); /* Slight hover effect */
-  }
+.word-box:hover {
+  transform: scale(1.1); /* Slight hover effect */
+}
 
-  .submit-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-  }
+.submit-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #18dcff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
 
-  .submit-button:hover {
-    background-color: #45a049;
-  }
+.submit-button:hover {
+  background-color: #45a049;
+}
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- Result Section -->
 <div *ngIf="showResult" class="result-section">
-    <div class="result-text" [innerHTML]="result"></div>
-    <!-- Replay Button -->
-    <button (click)="replayGame()">Replay Game with same difficulty </button>
-  </div>
+  <div class="result-text" [innerHTML]="result"></div>
+  <!-- Replay Button -->
+  <button (click)="replayGame()">Replay Game with same difficulty </button>
+</div>
 <br> 
-    <!-- Back to Menu -->
-    <button class="menu-button" (click)="goToMenu()">Back to Menu</button>
+  <!-- Back to Menu -->
+  <button class="menu-button" (click)="goToMenu()">Back to Menu</button>
 </div>
 
 <style>
-    /* General Body Styling */
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Press Start 2P', cursive; /* Gaming-inspired font */
-        background: radial-gradient(circle, #1d3557, #457b9d, #a8dadc); /* Vibrant gaming gradient */
-        color: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-    }
-    
-    /* Game Container */
-    .game-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9);
-        padding: 40px;
-        width: 90%;
-        max-width: 700px;
-        animation: zoomIn 1s ease-in-out;
-    }
-    
-    /* Header Styling */
-    h1 {
-        font-size: 3rem;
-        font-weight: bold;
-        color: #ffcc00; /* Golden-yellow for game title */
-        margin-bottom: 30px;
-        text-shadow: 0 4px 10px rgba(255, 204, 0, 0.7);
-        animation: pulse 2s infinite; /* Title pulse animation */
-    }
-    
-    /* Label Styling */
-    label {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        font-weight: bold;
-        color: #00d1ff; /* Bright blue text */
-        display: block;
-        text-shadow: 0 2px 5px rgba(0, 209, 255, 0.7);
-    }
-    
-    /* Input Fields */
-    input[type="number"], input[type="text"] {
-        padding: 12px;
-        font-size: 1.2rem;
-        border: none;
-        border-radius: 10px;
-        width: 100%;
-        max-width: 300px;
-        background: #1c1c1c;
-        color: #fff;
-        text-align: center;
-        box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
-        margin-bottom: 15px;
-    }
-    
-    /* Buttons */
-    button {
-        padding: 15px 30px;
-        font-size: 1.2rem;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
-        background: linear-gradient(135deg, #ff416c, #ff4b2b);
-        color: #fff;
-        box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-    
-    button:hover {
-        transform: scale(1.1);
-        box-shadow: 0 8px 20px rgba(255, 69, 0, 0.8);
-    }
-    
-    /* Start Button Special */
-    .start-button {
-        background: linear-gradient(135deg, #22c1c3, #fdbb2d);
-    }
-    
-    /* Word Display */
-    .word-display {
-        font-size: 1.5rem;
-        color: #fff;
-        margin-top: 20px;
-        animation: fadeIn 1s ease-in-out;
-    }
-    
-    .word-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 15px;
-        margin-top: 20px;
-    }
-    
-    .word-box {
-        background: #ffcc00;
-        color: #333;
-        font-size: 1.2rem;
-        font-weight: bold;
-        padding: 15px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-        transition: transform 0.3s, background 0.3s;
-        animation: bounce 0.5s ease-out;
-    }
-    
-    .word-box:hover {
-        transform: scale(1.1);
-        background: #1d3557;
-        color: #fff;
-    }
-    
-    /* Result Section */
-    .result-section {
-        margin-top: 20px;
-        background: #1d3557;
-        color: #ffcc00;
-        padding: 20px;
-        border-radius: 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-    }
-    
-    /* Animations */
-    @keyframes zoomIn {
-        0% {
-            transform: scale(0.8);
-            opacity: 0;
-        }
-        100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes pulse {
-        0%, 100% {
-            transform: scale(1);
-            opacity: 1;
-        }
-        50% {
-            transform: scale(1.1);
-            opacity: 0.9;
-        }
-    }
-    
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    @keyframes bounce {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-    </style>
-    
+  /* General Body Styling */
+  body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Press Start 2P', cursive; /* Gaming-inspired font */
+      background: radial-gradient(circle, #1d3557, #457b9d, #a8dadc); /* Vibrant gaming gradient */
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+  }
+  
+  /* Game Container */
+/* Ensure the parent takes up the full viewport */
+body, html {
+  margin: 50%;
+  padding: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.game-container {
+  justify-content:right;;
+  align-items: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.9);
+  padding: 80px;
+  margin-left: 22%;
+  margin-right: 50%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  padding-top: 10px;
+  max-width: 700px;
+  padding-bottom: 0%;
+  animation: zoomIn 1s ease-in-out;
+}
+
+ 
+  /* Header Styling */
+  h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ffcc00; /* Golden-yellow for game title */
+      margin-bottom: 30px;
+      text-shadow: 0 4px 10px rgba(255, 204, 0, 0.7);
+      animation: pulse 2s infinite; /* Title pulse animation */
+  }
+  
+  /* Label Styling */
+  label {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #00d1ff; /* Bright blue text */
+      display: block;
+      text-shadow: 0 2px 5px rgba(0, 209, 255, 0.7);
+  }
+  
+  /* Input Fields */
+  input[type="number"], input[type="text"] {
+      padding: 12px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 300px;
+      background: #1c1c1c;
+      color: #fff;
+      text-align: center;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+      margin-bottom: 15px;
+  }
+  
+  /* Buttons */
+  button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
+      color: #fff;
+      box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 69, 0, 0.8);
+  }
+  
+  /* Start Button Special */
+  .start-button {
+      background: linear-gradient(135deg, #22c1c3, #fdbb2d);
+  }
+  
+  /* Word Display */
+  .word-display {
+  font-size: 10px;
+  color: #f6f6f6;
+  margin-top: 20px;
+  padding: 30px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+.timer{
+  animation: fadeIn 1s ease-in-out, blink 1s step-end infinite;
+}
+
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+  
+  .word-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+  }
+  
+  .word-box {
+      background: #ffcc00;
+      color: #333;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+      transition: transform 0.3s, background 0.3s;
+      animation: bounce 0.5s ease-out;
+  }
+  
+  .word-box:hover {
+      transform: scale(1.1);
+      background: #1d3557;
+      color: #fff;
+  }
+  
+  /* Result Section */
+  .result-section {
+      margin-top: 20px;
+      background: #1d3557;
+      color: #ffcc00;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Animations */
+  @keyframes zoomIn {
+      0% {
+          transform: scale(0.8);
+          opacity: 0;
+      }
+      100% {
+          transform: scale(1);
+          opacity: 1;
+      }
+  }
+  
+  @keyframes pulse {
+      0%, 100% {
+          transform: scale(1);
+          opacity: 1;
+      }
+      50% {
+          transform: scale(1.1);
+          opacity: 0.9;
+      }
+  }
+  
+  @keyframes fadeIn {
+      0% {
+          opacity: 0;
+          transform: translateY(-20px);
+      }
+      100% {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  
+  @keyframes bounce {
+      0%, 100% {
+          transform: translateY(0);
+      }
+      50% {
+          transform: translateY(-10px);
+      }
+  }
+
+  .result-text {
+  font-size: 16px;
+  line-height: 1.5;
+}
+.highlight {
+  font-weight: bold;
+  color: #4caf50; /* Green for correct words */
+}
+.incorrect-words {
+  color: #f44336; /* Red for incorrect words */
+}
+.missing-words {
+  color: #ff9800; /* Orange for missing words */
+}
+.countdown {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2196f3;
+  text-align: center;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+
+
+
+
+
+  </style>
+  
