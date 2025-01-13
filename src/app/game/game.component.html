@@ -13,7 +13,10 @@
     <!-- Start Game Button -->
     <button class="start-button" *ngIf="!isGameActive" (click)="startGame()">Start Game</button>
 <br>
-    <!-- Word Display Section -->
+
+
+
+    <!-- Word Display Section 
     <div *ngIf="!hideWords" class="word-display">
         <div class="word-grid">
             <div *ngFor="let word of randomWords; let i = index" class="word-box">
@@ -23,6 +26,31 @@
         </div>
     </div>
     <br>
+
+
+-->
+
+
+
+  <!-- Word Display Section -->
+  <div *ngIf="!hideWords" class="word-display">
+    <div class="timer">⏲️ Your Game Starts in: {{ countdown }} seconds</div>
+    <div class="word-grid">
+      <div *ngFor="let word of randomWords; let i = index" class="word-box">
+        <div class="word-number">{{ i + 1 }}.</div>
+        <div class="word-text">{{ word }}</div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+
+
+
+
+
+
+
 
 
 
