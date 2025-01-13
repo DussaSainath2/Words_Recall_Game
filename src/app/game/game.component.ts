@@ -256,7 +256,7 @@ export class GameComponent {
     this.result = `
       <div class="result-text">
           <span class="score-text">You remembered <span class="highlight">${score}</span> out of <span class="highlight">${totalWords}</span> words!</span><br><br>
-          <span class="correct-words">Correct Words: <span>${correctWords.join(', ')}</span></span><br><br>
+          <span class="correct-words" >Correct Words: <span>${correctWords.join(', ')}</span></span><br><br>
           <span class="incorrect-words">Incorrect Words: <span>${incorrectWords.join(', ')}</span></span><br><br>
           <span class="missing-words">Missing Words: <span>${missingWords.join(', ')}</span></span><br><br>
           <span class="score-summary">Your Score: <span>${score}/${totalWords}</span></span><br><br>
