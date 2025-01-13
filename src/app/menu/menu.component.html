@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
-   
     <style>
         /* Body styling */
         body {
@@ -14,68 +13,94 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #1e3c72, #2a5298); /* Attractive gradient background */
-            font-family: 'Arial', sans-serif;
+            background: radial-gradient(circle, #141E30, #243B55); /* Gaming-style gradient */
+            font-family: 'Press Start 2P', cursive; /* Retro gaming font */
             color: #fff;
+            overflow: hidden; /* Avoid scrollbars */
         }
 
         /* Title styling */
         h1 {
-            font-size: 3em;
-            font-weight: bold;
-            text-align: center;
+            font-size: 3.5em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Glow effect for text */
+            color: #FFD700; /* Golden color for a premium look */
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); /* Neon glow */
+            animation: pulse 2s infinite; /* Pulsating animation */
+        }
+
+        /* Animation for the title */
+        @keyframes pulse {
+            0%, 100% {
+                text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 215, 0, 0.8);
+            }
         }
 
         /* Button container */
         .button-container {
             display: flex;
-            flex-direction: column; /* Stack buttons vertically */
-            gap: 15px; /* Add spacing between buttons */
+            flex-direction: column;
+            gap: 20px; /* Increase spacing between buttons */
         }
 
         /* Buttons styling */
         button {
-            padding: 15px 30px;
+            padding: 15px 40px;
             font-size: 1.5em;
             font-weight: bold;
             cursor: pointer;
             border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Vibrant button gradient */
+            border-radius: 12px;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b); /* Gaming-inspired button gradient */
             color: white;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Button shadow for depth */
+            box-shadow: 0 4px 15px rgba(255, 50, 50, 0.5); /* Vibrant shadow */
             transition: transform 0.2s ease, box-shadow 0.3s ease;
+            text-transform: uppercase; /* Gaming-style text */
+            letter-spacing: 2px; /* Add spacing for a clean look */
         }
 
         /* Hover effect for buttons */
         button:hover {
-            transform: scale(1.1); /* Slightly enlarge on hover */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 6px 20px rgba(255, 50, 50, 0.7);
         }
 
         /* Focus effect for buttons */
         button:focus {
             outline: none; /* Remove default outline */
-            box-shadow: 0 0 10px #fff; /* Glow effect on focus */
+            box-shadow: 0 0 15px #fff, 0 0 30px rgba(255, 50, 50, 0.7); /* Neon glow */
+        }
+
+        /* Footer text styling */
+        p {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 40px;
+            color: #aaa;
         }
     </style>
 </head>
-
-
-<h1 style=" display: flex;
-justify-content: center;
-align-items: center;">Words Recall</h1>
-
 <body>
-
+    <h1>Words Recall</h1>
     <div class="button-container">
         <button (click)="navigateTo('game')">Play</button>
         <button (click)="navigateTo('about')">About Us</button>
         <button (click)="quitGame()">Quit</button>
     </div>
-<br><br><br>
-    <p style="font-family: 'Times New Roman', Times, serif;font-weight: bold;text-align: end;">Copyright &copy; Sainath Dussa. All rights reserved.</p>
+    <p>&copy; 2025 Sainath Dussa. All rights reserved.</p>
+
+    <script>
+        // Placeholder functions to retain existing functionality
+        function navigateTo(page) {
+            alert(`Navigating to ${page}`);
+        }
+
+        function quitGame() {
+            alert('Quitting the game');
+        }
+    </script>
 </body>
 </html>

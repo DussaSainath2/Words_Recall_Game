@@ -1,82 +1,154 @@
 <div class="about-container">
-    <h1>About The Game</h1>
-    <p>This game and its associated code, assets, and design were independently created by Sainath Dussa. It does not include or rely on any external proprietary libraries, frameworks, or third-party copyrighted material unless explicitly stated. All rights reserved.</p>
-    <p style="text-align: right;">-- Sainath Dussa</p>
-    <p class="copyright">© 2025 DS</p>
-    <button (click)="goToMenu()" class="back-button">Back to Menu</button>
-  </div>
-  <div class="sliding-text">Welcome to the Gaming Zone!</div>
+  <h1>About The Game</h1>
+  <p>
+    This game was meticulously created from scratch by Sainath Dussa. Every aspect of the game's code, assets, and design has been independently developed without the use of any external proprietary libraries, frameworks, or third-party copyrighted materials unless explicitly stated. The development process adhered to all legal and copyright guidelines to ensure full compliance with intellectual property laws.
+    
+    All assets, including graphics, sounds, and animations, have been custom-created or properly licensed, ensuring that no unauthorized content has been used. I have taken every precaution to ensure that the game is entirely original and legally sound, following the best practices of software development.
+    
+    This project is the result of extensive research, dedication, and creative effort to bring you a unique and engaging experience. All rights related to this game are reserved by the developer.
+    
+   </p>
+  <p class="copyright" style="text-align: right;;">-- Sainath Dussa</p>
+
+
 
 <style>
-  .sliding-text {
-    width: 100%; /* Full-width for the sliding container */
-    white-space: nowrap; /* Prevent line breaks */
-    overflow: hidden; /* Hide overflow content */
-    box-sizing: border-box;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fff;
-    background: linear-gradient(135deg, #ff5722, #e64a19);
-    text-align: center;
-    padding: 10px;
-  }
-
-  /* Animation for sliding text */
-  .sliding-text {
-    animation: slide-left 10s linear infinite; /* Smooth sliding animation */
-  }
-
-  @keyframes slide-left {
-    0% {
-      transform: translateX(100%); /* Start from outside right */
-    }
-    100% {
-      transform: translateX(-100%); /* Slide to outside left */
-    }
+  .copyright {
+    position: fixed; /* Fix it to the screen */
+    bottom: 170px; /* Place it 10px above the bottom */
+    right: 10px; /* Align it 10px from the right edge */
+    font-size: 1rem; /* Adjust font size for readability */
+    color: #ccc; /* Light gray color */
+    font-family: 'Arial', sans-serif; /* Clean font for legibility */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for visibility */
+    padding: 5px 10px; /* Add some padding for a cleaner look */
+    border-radius: 5px; /* Rounded corners for aesthetics */
   }
 </style>
 
-<!--
+<br><br><br>
 
 
-/*
 
-<div class="sliding-text1">Many More Games Yet to Come</div>
+  <p class="copyright1">© 2025 Sainath Dussa . All Rights Reserved .</p>
+  <button (click)="goToMenu()" class="back-button">Back to Menu</button>
+</div>
 
+<div class="sliding-text">Welcome to the Gaming Zone!</div>
 
-  .sliding-text1 {
-    position: fixed; /* Sticks the text to the bottom of the viewport */
-    bottom: 0; /* Positions it at the very bottom */
-    width: 100%; /* Full-width for the sliding container */
-    white-space: nowrap; /* Prevent line breaks */
-    overflow: hidden; /* Hide overflow content */
-    box-sizing: border-box;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffee00; /* Yellow text */
-    background: linear-gradient(135deg, #000000, #000000); /* Black background */
-    text-align: center;
-    padding: 10px;
-    z-index: 9999; /* Ensures it appears on top of other elements */
-  }
-
-  */
-
-
--->
 <style>
+/* Base styling for the about container */
+.about-container {
+  text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 800px;
+  border: 3px solid #fff;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.8); /* Transparent black */
+  color: #fff;
+  font-family: 'Orbitron', sans-serif; /* Futuristic gaming font */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
 
-  /* Animation for sliding text */
-  .sliding-text1 {
-    animation: slide-left 10s linear infinite; /* Smooth sliding animation */
-  }
+/* Styling for headings */
+.about-container h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #ff9800; /* Bright orange for gaming feel */
+  text-shadow: 0 0 15px #ff9800, 0 0 30px #ff5722; /* Neon effect */
+  animation: glow 2s infinite alternate; /* Glowing effect */
+}
 
-  @keyframes slide-left {
-    0% {
-      transform: translateX(-100%); /* Start from outside right */
-    }
-    100% {
-      transform: translateX(100%); /* Slide to outside left */
-    }
+/* Paragraph styling */
+.about-container p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+/* Back button styling */
+.back-button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(45deg, #ff5722, #ff9800); /* Vibrant gradient */
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.5);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Button hover effect */
+.back-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 87, 34, 0.7);
+}
+
+/* Sliding text at the top */
+.sliding-text {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #ff5722, #ff9800);
+  text-align: center;
+  padding: 10px;
+  z-index: 9999;
+  animation: slide-left 10s linear infinite;
+}
+
+/* Sliding text at the bottom */
+.sliding-text1 {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffee00;
+  background: #000; /* Black background */
+  text-align: center;
+  padding: 10px;
+  z-index: 9999;
+  animation: slide-right 10s linear infinite;
+}
+
+/* Keyframes for sliding animation */
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
   }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Glowing effect for heading */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 15px #ff9800, 0 0 30px #ff5722;
+  }
+  to {
+    text-shadow: 0 0 30px #ff5722, 0 0 60px #ff9800;
+  }
+}
 </style>
